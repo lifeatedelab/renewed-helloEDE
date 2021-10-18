@@ -1,18 +1,9 @@
 import discord
-from discord import Member
 from discord.ext import commands
-from discord.ext.commands.core import command
 
 class registrasi_g3(commands.Cog):
     def __init__(self, client):
         self.client = client
-
-    @commands.command()
-    async def ping(self, ctx):
-        ping = str(round(self.client.latency * 100)) + " ms"
-        embed=discord.Embed(color=0xffa200)
-        embed.add_field(name="Ping " + str(ctx.author), value=ping, inline=False)
-        await ctx.send(embed=embed)
     
     @commands.command()
     async def Perkenalan_yuk(self, ctx, *data):

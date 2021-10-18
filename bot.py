@@ -1,15 +1,24 @@
 from discord.ext import commands
 import discord
 import os
-
-client = commands.Bot(command_prefix = "EDE!")
+# bot EDE aslinya pake EDE!
+client = commands.Bot(command_prefix = "tes!")
 
 token = ""
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='This App Grows'))
+    #This App Grows
+    name = 'This App Debug'
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=name))
     print("We have logged in as {}".format(client.user))
+
+@client.command()
+async def ping(ctx):
+    ping = str(round(client.latency * 100)) + " ms"
+    embed=discord.Embed(color=0xffa200)
+    embed.add_field(name="Ping " + str(ctx.author), value=ping, inline=False)
+    await ctx.send(embed=embed)
 
 @client.command()
 async def load(ctx, extension):
